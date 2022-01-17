@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>ajax_practice</title>
+</head>
+<body>
+
+    
+    
+    <!-- <form action="/ajax_practice" method="post"> -->
+        <input type="text" id="ajax_text3">
+        <button id="ajax_btn3" class="btn">아작스연습3</button>
+
+
+
+
+        <p class="book-title">reading</p>
+        <p class="book-level">JUNIOR</p>
+        <p class="book-amount">4</p>
+    <!-- </form> -->
+
+
+<script>
+
+
+
+$(document).on('click', '#ajax_btn3', function() {
+
+    let data1 = {
+        "ajaxText3": $('#ajax_text3').val(),
+        "bookTitle": $('.book-title').text(),
+        "bookLevel": $('.book-level').text(),
+        "bookAmount": $('.book-amount').text(),
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: '/ajaxTest',
+        data: data1
+
+    }).done(function(result) {
+        console.log(result.status);
+        alert('이름추가');
+
+    }).fail(function(error) {
+        alert('에러')
+    })
+
+
+})
+
+// $('#ajax_btn3').click(function() {
+//     console.log(ajaxText3);
+
+// })
+
+</script>
+</body>
+</html>
